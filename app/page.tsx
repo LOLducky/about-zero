@@ -20,7 +20,9 @@ export default function Page() {
 
   useEffect(() => {
     const t = () =>
-      setTime(new Date().toISOString().replace("T", " ").split(".")[0] + " UTC");
+      setTime(
+        new Date().toISOString().replace("T", " ").split(".")[0] + " UTC"
+      );
     t();
     const id = setInterval(t, 1000);
     return () => clearInterval(id);
@@ -55,14 +57,22 @@ export default function Page() {
         }
 
         .v-vignette {
-          content: ''; position: fixed; inset: 0;
+          position: fixed; inset: 0;
           background: radial-gradient(ellipse at 50% 40%, transparent 40%, rgba(0,0,0,0.6) 100%);
           pointer-events: none; z-index: 9998;
         }
+
         .v-scan {
           position: fixed; inset: 0;
-          background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.04) 3px, rgba(0,0,0,0.04) 4px);
-          pointer-events: none; z-index: 9999;
+          background: repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 3px,
+            rgba(0,0,0,0.04) 3px,
+            rgba(0,0,0,0.04) 4px
+          );
+          pointer-events: none;
+          z-index: 9999;
           opacity: .55;
         }
 
@@ -80,10 +90,10 @@ export default function Page() {
           border-bottom: 1px solid var(--gborder);
         }
 
-        .nav-left { display: flex; align-items: center; gap: 14px; }
         .nav-logo { font-family: var(--mono); font-size: 0.78rem; color: var(--g); text-decoration: none; }
         .nav-logo span { color: var(--dim); }
-        .nav-clock { font-family: var(--mono); font-size: 0.6rem; color: var(--dim); letter-spacing: 0.05em; }
+
+        .nav-clock { font-family: var(--mono); font-size: 0.6rem; color: var(--dim); }
 
         .discord-link {
           display: flex; align-items: center; gap: 8px;
@@ -93,7 +103,7 @@ export default function Page() {
           border: 1px solid var(--gborder);
         }
 
-        .page { position: relative; z-index: 1; padding-top: 46px; }
+        .page { padding-top: 46px; }
 
         .last-login {
           max-width: 1080px; margin: 22px auto 0; padding: 0 32px;
@@ -112,18 +122,17 @@ export default function Page() {
       <div className="sc br" />
 
       <nav>
-        <div className="nav-left">
-          <a href="/" className="nav-logo">
-            <span>~/</span>igotzeroideas
-          </a>
-        </div>
-        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+        <a href="/" className="nav-logo">
+          <span>~/</span>igotzeroideas
+        </a>
+
+        <div style={{ display: "flex", gap: 14, alignItems: "center" }}>
           <span className="nav-clock">{time}</span>
           <a
             href="https://discord.com/users/igotzeroideas"
-            target="_blank"
-            rel="noopener noreferrer"
             className="discord-link"
+            target="_blank"
+            rel="noreferrer"
           >
             discord
           </a>
@@ -136,7 +145,7 @@ export default function Page() {
         </div>
 
         <main>
-          {/* your terminal page content */}
+          {/* ALL YOUR ORIGINAL PAGE CONTENT GOES HERE UNCHANGED */}
         </main>
       </div>
     </>
